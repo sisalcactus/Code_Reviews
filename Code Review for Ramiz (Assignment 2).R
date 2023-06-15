@@ -61,7 +61,7 @@ if(is.numeric(as.numeric(user_input)) &
           # first_digit <- floor(user_input/100)
           # second_digit <- (user_input - third_digit - first_digit*100)/10
   # 11. Line 26: It seems that there is a bug with the condition in the if statement (none of the error messages you created appear) if we input a negative two-digit number (say, -10).
-      # The reason this happens is because right now none of the validity check seem to catch it: -10, being an integer, passes checks for (1) and (2) and the nchar() function sees it as a 3-digit  character.
+      # The reason this happens is because right now none of the validity check seem to catch it: -10 passes checks for (1) and (2) as it is an integer; it also passes the check for (3) as the nchar() function sees it as a 3-digit character.
       # In other words, numbers like -10 will all be deemed "valid" according to your checks (1), (2), and (3), ultimately permitting the input to end up being calculated.
       # This then yields NAs in the calculation, with no error messages (that you created) being printed.
       # To resolve this bug, you can add the test for positive numbers (please see my 7th comment);
