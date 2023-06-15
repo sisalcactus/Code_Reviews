@@ -53,7 +53,7 @@ if(is.numeric(as.numeric(user_input)) &
   # 5. Lines 17 and 20: These look correct; great work with the validity check design
   # 6. Line 19: I think the priority being checked for is whether the input is an integer; maybe revisit the wording
   # 7. Line 23: Good work with using nchar(); this wasn't explicitly asked for so you went above and beyond with this one
-  # 8. Line 24:  It might be interesting to add a line of code to check for positive numbers (as.numeric(user_input) > 0) 
+  # 8. Line 24:  It might be interesting to add a line of code to check for positive numbers (as.numeric(user_input) > 0)
   # 9. Line 25: To avoid ambiguity, the wording in the comment can be tweaked to "each *digit* from the input" as the input itself itself is number
   # 10. Line 26: I like the code for its elegance and simplicity. Well done, Ramiz. If you were interested, another way to find the three numbers are to use %% (to extract the rightmost digit), floor() (to extract the leftmost digit), and those two extracted digits to extract the middle digit.
       # Rationale: Although a bit long, it can be a fun brainteaser (an unconventional approach)
@@ -65,10 +65,11 @@ if(is.numeric(as.numeric(user_input)) &
       # In other words, numbers like -10 will all be deemed "valid" according to your checks (1), (2), and (3), ultimately permitting the input to end up being calculated.
       # This then yields NAs in the calculation, with no error messages (that you created) being printed.
       # To resolve this bug, you can add the test for positive numbers (please see my 7th comment);
-  # 12. Lines 28 and 32: I believe the comments should be switched
-  # 13. Lines 36 and onward: I appreciate the distinction between (1) being false and (2)/(3) being false, prompting different error messages.
+  # 12. Line 26: Another bug I found was that inputting 000 also prompts the message that I inputted a narcissistic number so maybe we could add a line of code to resolve this
+  # 13. Lines 28 and 32: I believe the comments should be switched
+  # 14. Lines 36 and onward: I appreciate the distinction between (1) being false and (2)/(3) being false, prompting different error messages.
       # This shows you once again went above and beyond
-  # 14. As a thought, I suggest capitalizing "armstrong" and "boolean" in the comments (just for accuracy/grammar)
-  # 15. Collectively, the code generally works as expected (with the small exception of inputting negative 2-digit numbers as flagged in my 11th comment)
-      # and the correct messages are printed, corresponding to the input (I tested inputs like 111, 1000, 0, -11111, aahhh, 1.1, and all 3-digit narcissitic numbers);
-      # great work!
+  # 15. As a thought, I suggest capitalizing "armstrong" and "boolean" in the comments (just for accuracy/grammar)
+  # 16. Collectively, the code is easy to follow and understand and generally works as expected (with the small exception of inputting negative 2-digit numbers and 000 as flagged in my 11th and 12th comments)
+      # and the correct messages are printed, appropriately corresponding to the input (I tested inputs like 111, 1000, 0, -11111, aahhh, 1.1, and all 3-digit narcissistic numbers);
+      # great work! You did it!
