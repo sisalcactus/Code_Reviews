@@ -44,7 +44,7 @@ if(is.numeric(as.numeric(user_input)) &
   }
 }
 
-# *Comments from Code Reviewer (Shawn)*
+# *Comments from Code Reviewer (Shawn)* ####
   # 1. Overall concise and elegant code with clear, explanatory comments. Please find suggestions below:
   # 2. Line 8: I suggest keeping the variable name ("user_input") more concise to conserve space, especially as later you have a relatively long line of code (the cubing and summing calculation)
   # 3. Lines 10-14: I appreciate the organization. Great work.
@@ -70,6 +70,8 @@ if(is.numeric(as.numeric(user_input)) &
   # 14. Lines 36 and onward: I appreciate the distinction between (1) being false and (2)/(3) being false, prompting different error messages.
       # This shows you once again went above and beyond
   # 15. As a thought, I suggest capitalizing "armstrong" and "boolean" in the comments (just for accuracy/grammar)
-  # 16. Collectively, the code is easy to follow and understand and generally works as expected (with the small exception of inputting negative 2-digit numbers and 000 as flagged in my 11th and 12th comments)
+  # 16. Another thought is that maybe we can adjust the indents so the components of the nested ifs and elses are more clearly shown in their respective if-else blocks
+  # 17. Maybe also specify which style guide you used so the code reviewer can use it to cross-reference
+  # 18. Collectively, the code is easy to follow and understand and generally works as expected (with the small exception of inputting negative 2-digit numbers and 000 as flagged in my 11th and 12th comments)
       # and the correct messages are printed, appropriately corresponding to the input (I tested inputs like 111, 1000, 0, -11111, aahhh, 1.1, and all 3-digit narcissistic numbers);
       # great work! You did it!
