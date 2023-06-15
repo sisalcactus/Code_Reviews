@@ -65,13 +65,13 @@ if(is.numeric(as.numeric(user_input)) &
       # In other words, numbers like -10 will all be deemed "valid" according to your checks (1), (2), and (3), ultimately permitting the input to end up being calculated.
       # This then yields NAs in the calculation, with no error messages (that you created) being printed.
       # To resolve this bug, you can add the test for positive numbers (please see my 7th comment);
-  # 12. Line 26: Another bug I found was that inputting 000 also prompts the message that I inputted a narcissistic number so maybe we could add a line of code to resolve this
+  # 12. Line 26: Another bug I found was that inputting 000 also prompts the message that I inputted a narcissistic number so maybe we could add a line of code to resolve this (another validity check)
   # 13. Lines 28 and 32: I believe the comments should be switched
-  # 14. Lines 36 and onward: I appreciate the distinction between (1) being false and (2)/(3) being false, prompting different error messages.
+  # 14. Lines 36 and onward: I appreciate the distinction between (1) being false (great application of is.na()) and (2)/(3) being false, prompting different error messages.
       # This shows you once again went above and beyond
   # 15. As a thought, I suggest capitalizing "armstrong" and "boolean" in the comments (just for accuracy/grammar)
   # 16. Another thought is that maybe we can adjust the indents so the components of the nested ifs and elses are more clearly shown in their respective if-else blocks
   # 17. Maybe also specify which style guide you used so the code reviewer can use it to cross-reference
   # 18. Collectively, the code is easy to follow and understand and generally works as expected (with the small exception of inputting negative 2-digit numbers and 000 as flagged in my 11th and 12th comments)
-      # and the correct messages are printed, appropriately corresponding to the input (I tested inputs like 111, 1000, 0, -11111, aahhh, 1.1, and all 3-digit narcissistic numbers);
+      # and the functions are correctly written and correct messages are printed, appropriately corresponding to the input (I tested inputs like 111, 1000, 0, -11111, aahhh, 1.1, and all 3-digit narcissistic numbers);
       # great work! You did it!
