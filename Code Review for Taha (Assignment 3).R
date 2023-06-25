@@ -134,18 +134,28 @@ play_game()
   #' Excellent integration of using option to guess the full word and toupper() to standardize the input
 
 #' Style and Organization:
+  #' Very good use of functions, defining them at the start of the code, to keep the main loop short and sweet
   #' Logical placement of code and streamlined comments appropriately placed throughout
   #' Print messages are short and in separate lines so we avoid walls of text; great job
   #' Clever and concise one-line code in the validity check (line 6)
+  #' The first code block (starting with line 5) is concise and works as expected; amazing
 
 #' Recommendations:
+  #' Line 19: to set a vector of characters, could use unlist() rather than [[1]] if preferred
+  #' Line 34: we might not have to set and call the play_game() function; instead, we could just have, right after defining the visual_display() function, "wordlist <- readLines("Hangman_Words.txt")" and onward (basically keeping everything the same except taking out lines 34, 108, and 110)
   #' Line 38: "prob = NULL" is not needed as that's in the default
-  #' Line 52: for concision, can use paste() rather than paste0() (and remove the unnecessary spaces) and update prompt to: "The mystery word is", nchar(mystery_word), "letters long."
+  #' Line 44: could place this code in the visual_display() function for organization and replace single quote marks with double quote marks for consistency in style
+  #' Line 50: might be a good idea to tell the reader that even if they guess all letters correctly, they have to guess the full word to win the game (please see my comment regarding line 89)
+  #' Line 52: update prompt to: "The mystery word is", nchar(mystery_word), "letters long."
+  #' Line 68: can replace "strsplit(mystery_word, "")[[1]]" with "mystery_word"
   #' Line 75: might be a good idea to add a space before and after the minus sign for style
-  #' Line 79: can use "mistake = 5" instead since it can't get higher than 5 so the ">" is not needed
+  #' Line 79: can use "mistake == 5" instead since it can't get higher than 5 so the ">" is not needed
+  #' Line 87: could place this code into the "if (user_guess %in% strsplit(mystery_word, "")[[1]])" (line 68) for organization)
   #' Line 89: I had guessed all letters of the word correctly (the visual clue of progress is filled) and was still prompted to enter the full word (I selected N for "Would you like to guess the mystery word? (Y/N)"); maybe we could add code to break the loop and say I won without needing to enter the full word
   #' Line 90: the user is prompted to enter Y or N, and I was able to enter non-characters that prompted the message of "Enter guess"; maybe add another validity check here so the user is restricted to entering only Y or N
+  #' Line 94: might be more intuitive to have "guessed_word" (noun) than "guess_the_word" (imperative)
   #' General:
+    #' for concision, can use paste() rather than paste0() (and remove the unnecessary spaces) for lines such as 52, 69, and 81
     #' maybe add a line that prompts the user to play again whether they have won or lost: could do this outside the loop
     #' maybe add a message that gives users on an ever-updating list of wrong letters they've guessed (could create a new vector to which newly made incorrect guesses are added, e.g. something like wrong_guesses <- c() as an initial condition and wrong_guesses <- c(wrong_guesses, guessed_letters) in an if block to update, and shown in a print message)
     #' might be a good idea to notify the user their remaining tries even when they've inputted a correct letter (just another print() message but without 1 being added to "mistakes")
