@@ -112,7 +112,7 @@ play_game()
 
 #' Peer Reviewer Shawn's Comments ####
 
-#' Functionality: 
+#' Required Functionality:
   #' Dictionary is correctly prepared (in .txt file and 1 column).
   #' Word list is read correctly
   #' Sampling occurs correctly
@@ -121,18 +121,22 @@ play_game()
   #' User input is correctly requested and the correct error message is printed for non-letter characters exceeding 1 character
   #' Correct notification that user inputs are in the secret word with next letter requested properly
   #' Next letters are correctly requested until the user runs out of all attempts
-  #' 
+  #' Game is over with all attempts used up with correct prompt shown and ended
+  #' No infinite loop appeared; great job
+  #' Correct letters and wrong letters with remaining tries are prompted
 
-#' Bonus functionality:
+#' Bonus Functionality:
   #' Characters are checked whether they are letters or not; elegant use of grepl() with the ^ and $; great work
   #' Both upper and lower case letters allowed using grepl(); great job
   #' Visual clue of progress is given with each correct guess
-  #' 
+  #' Clever use of toupper() to standardize inputs
+  #' Ingenious use of noquote() and rep() to set the blank tiles (visual clue of progress)
+  #' Excellent integration of using option to guess the full word and toupper() to standardize the input
 
-#' Organization:
+#' Style and Organization:
   #' Logical placement of code and streamlined comments appropriately placed throughout
   #' Print messages are short and in separate lines so we avoid walls of text; great job
-  #' 
+  #' Clever and concise one-line code in the validity check (line 6)
 
 #' Recommendations:
   #' Line 38: "prob = NULL" is not needed as that's in the default
@@ -141,5 +145,8 @@ play_game()
   #' Line 79: can use "mistake = 5" instead since it can't get higher than 5 so the ">" is not needed
   #' Line 89: I had guessed all letters of the word correctly (the visual clue of progress is filled) and was still prompted to enter the full word (I selected N for "Would you like to guess the mystery word? (Y/N)"); maybe we could add code to break the loop and say I won without needing to enter the full word
   #' Line 90: the user is prompted to enter Y or N, and I was able to enter non-characters that prompted the message of "Enter guess"; maybe add another validity check here so the user is restricted to entering only Y or N
-  #' General: maybe add a line that prompts the user to play again whether they have won or lost: could do this outside the loop
+  #' General:
+    #' maybe add a line that prompts the user to play again whether they have won or lost: could do this outside the loop
+    #' maybe add a message that gives users on an ever-updating list of wrong letters they've guessed (could create a new vector to which newly made incorrect guesses are added, e.g. something like wrong_guesses <- c() as an initial condition and wrong_guesses <- c(wrong_guesses, guessed_letters) in an if block to update, and shown in a print message)
+    #' might be a good idea to notify the user their remaining tries even when they've inputted a correct letter (just another print() message but without 1 being added to "mistakes")
   
