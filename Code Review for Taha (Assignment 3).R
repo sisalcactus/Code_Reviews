@@ -108,3 +108,38 @@ play_game <- function() {
 }
 
 play_game()
+
+
+#' Peer Reviewer Shawn's Comments ####
+
+#' Functionality: 
+  #' Dictionary is correctly prepared (in .txt file and 1 column).
+  #' Word list is read correctly
+  #' Sampling occurs correctly
+  #' Length of word is provided in the prompt
+  #' Number of tries is given with clear instructions
+  #' User input is correctly requested and the correct error message is printed for non-letter characters exceeding 1 character
+  #' Correct notification that user inputs are in the secret word with next letter requested properly
+  #' Next letters are correctly requested until the user runs out of all attempts
+  #' 
+
+#' Bonus functionality:
+  #' Characters are checked whether they are letters or not; elegant use of grepl() with the ^ and $; great work
+  #' Both upper and lower case letters allowed using grepl(); great job
+  #' Visual clue of progress is given with each correct guess
+  #' 
+
+#' Organization:
+  #' Logical placement of code and streamlined comments appropriately placed throughout
+  #' Print messages are short and in separate lines so we avoid walls of text; great job
+  #' 
+
+#' Recommendations:
+  #' Line 38: "prob = NULL" is not needed as that's in the default
+  #' Line 52: for concision, can use paste() rather than paste0() (and remove the unnecessary spaces) and update prompt to: "The mystery word is", nchar(mystery_word), "letters long."
+  #' Line 75: might be a good idea to add a space before and after the minus sign for style
+  #' Line 79: can use "mistake = 5" instead since it can't get higher than 5 so the ">" is not needed
+  #' Line 89: I had guessed all letters of the word correctly (the visual clue of progress is filled) and was still prompted to enter the full word (I selected N for "Would you like to guess the mystery word? (Y/N)"); maybe we could add code to break the loop and say I won without needing to enter the full word
+  #' Line 90: the user is prompted to enter Y or N, and I was able to enter non-characters that prompted the message of "Enter guess"; maybe add another validity check here so the user is restricted to entering only Y or N
+  #' General: maybe add a line that prompts the user to play again whether they have won or lost: could do this outside the loop
+  
