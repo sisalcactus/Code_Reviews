@@ -118,7 +118,7 @@ play_game()
   #' Sampling occurs correctly
   #' Length of word is provided in the prompt
   #' Number of tries is given with clear instructions
-  #' User input is correctly requested and the correct error message is printed for non-letter characters exceeding 1 character
+  #' User input is correctly requested (great use of toupper() in the line 58 so you didn't have to define a new variable) and the correct error message is printed for non-letter characters exceeding 1 character
   #' Correct notification that user inputs are in the secret word with next letter requested properly
   #' Next letters are correctly requested until the user runs out of all attempts
   #' Game is over with all attempts used up with correct prompt shown and ended
@@ -128,9 +128,9 @@ play_game()
 #' Bonus Functionality:
   #' Characters are checked whether they are letters or not; elegant use of regex grepl() with the ^ and $; great work
   #' Both upper and lower case letters allowed using grepl(); great job
-  #' Visual clue of progress is given with each correct guess
+  #' Visual clue of progress is given with each correct guess using the rep() function with "_" and updates as the game progressed; this helps the user stay informed so great user experience
   #' Clever use of toupper() to standardize inputs
-  #' Ingenious use of noquote() and rep() to set the blank tiles (visual clue of progress)
+  #' Ingenious use of noquote() and rep() to set the blank tiles (visual clue of progress) with the appropriately placed code to update that clue in line 87
   #' Excellent integration of using option to guess the full word and toupper() to standardize the input
 
 #' Style and Organization:
@@ -139,21 +139,22 @@ play_game()
   #' Print messages are short and in separate lines so we avoid walls of text; great job
   #' Clever and concise one-line code in the validity check (line 6)
   #' The first code block (starting with line 5) is particularly concise and works as expected with clever Boolean usage; amazing
+  #' The two functions you set up at the start of the code show the relevant parameters; great work
   #' Detailed explanations throughout in your comments; fantastic attention to detail and focus on the purpose of the line of code at hand
 
 #' Recommendations:
   #' Line 19: to set a vector of characters, could use unlist() rather than [[1]] if preferred
-  #' Line 34: we might not have to set and call the play_game() function; instead, we could just have, right after defining the visual_display() function, "wordlist <- readLines("Hangman_Words.txt")" and onward (basically keeping everything the same except taking out lines 34, 108, and 110)
+  #' Line 34: to streamline the code, we could take out the creation and calling of the play_game() function; instead, we could just have, right after defining the visual_display() function, "wordlist <- readLines("Hangman_Words.txt")" and onward (basically keeping everything the same except taking out lines 34, 108, and 110 to keep your code concise)
   #' Line 38: "prob = NULL" is not needed as that's in the default
   #' Line 44: could place this code in the visual_display() function for organization and replace single quote marks with double quote marks for consistency in style
   #' Line 50: might be a good idea to tell the reader that even if they guess all letters correctly, they have to guess the full word to win the game (please see my comment regarding line 89)
   #' Line 52: update prompt to: "The mystery word is", nchar(mystery_word), "letters long."
   #' Line 68: can replace "strsplit(mystery_word, "")[[1]]" with "mystery_word"
   #' Line 75: might be a good idea to add a space before and after the minus sign for style
-  #' Line 79: can use "mistake == 5" instead since it can't get higher than 5 so the ">" is not needed
+  #' Line 79: can use "mistake == 5" instead since it can't get higher than 5 so the ">" will not be possible to reach (so "==" may be more applicable)
   #' Line 87: could place this code into the "if (user_guess %in% strsplit(mystery_word, "")[[1]])" (line 68) for organization)
   #' Line 89: I had guessed all letters of the word correctly (the visual clue of progress is filled) and was still prompted to enter the full word (I selected N for "Would you like to guess the mystery word? (Y/N)"); maybe we could add code to break the loop and say I won without needing to enter the full word
-  #' Line 90: the user is prompted to enter Y or N, and I was able to enter non-characters that prompted the message of "Enter guess"; maybe add another validity check here so the user is restricted to entering only Y or N
+  #' Line 90: the user is prompted to enter Y or N, and I was able to enter non-characters that prompted the message of "Enter guess"; maybe add another validity check here so the user is restricted to entering only Y or N (in line 93; maybe we could add another regex here)
   #' Line 94: might be more intuitive to have "guessed_word" (noun) than "guess_the_word" (imperative)
   #' General:
     #' for concision, can use paste() rather than paste0() (and remove the unnecessary spaces) for lines such as 52, 69, and 81
@@ -162,5 +163,5 @@ play_game()
     #' might be a good idea to notify the user their remaining tries even when they've inputted a correct letter (just another print() message but without 1 being added to "mistakes")
   
 #' Final Thoughts:
-  #' The code is definitely efficient and streamlined overall with robust defence and fluid user experience, surpassing the expectations for this assignment.
+  #' The code is definitely efficient, readable, easy to follow, and streamlined with robust defence and fluid user experience, overall surpassing the expectations for this assignment.
   #' Outstanding work, Taha!
