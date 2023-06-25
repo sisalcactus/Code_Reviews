@@ -126,7 +126,7 @@ play_game()
   #' Correct letters and wrong letters with remaining tries are prompted
 
 #' Bonus Functionality:
-  #' Characters are checked whether they are letters or not; elegant use of grepl() with the ^ and $; great work
+  #' Characters are checked whether they are letters or not; elegant use of regex grepl() with the ^ and $; great work
   #' Both upper and lower case letters allowed using grepl(); great job
   #' Visual clue of progress is given with each correct guess
   #' Clever use of toupper() to standardize inputs
@@ -134,11 +134,12 @@ play_game()
   #' Excellent integration of using option to guess the full word and toupper() to standardize the input
 
 #' Style and Organization:
-  #' Very good use of functions, defining them at the start of the code, to keep the main loop short and sweet
+  #' Very good use of functions and loop-related code (highlights being "next" and "break"), with definitions at the start of the code, to keep the main loop short and sweet
   #' Logical placement of code and streamlined comments appropriately placed throughout
   #' Print messages are short and in separate lines so we avoid walls of text; great job
   #' Clever and concise one-line code in the validity check (line 6)
-  #' The first code block (starting with line 5) is concise and works as expected; amazing
+  #' The first code block (starting with line 5) is particularly concise and works as expected with clever Boolean usage; amazing
+  #' Detailed explanations throughout in your comments; fantastic attention to detail and focus on the purpose of the line of code at hand
 
 #' Recommendations:
   #' Line 19: to set a vector of characters, could use unlist() rather than [[1]] if preferred
@@ -160,3 +161,6 @@ play_game()
     #' maybe add a message that gives users on an ever-updating list of wrong letters they've guessed (could create a new vector to which newly made incorrect guesses are added, e.g. something like wrong_guesses <- c() as an initial condition and wrong_guesses <- c(wrong_guesses, guessed_letters) in an if block to update, and shown in a print message)
     #' might be a good idea to notify the user their remaining tries even when they've inputted a correct letter (just another print() message but without 1 being added to "mistakes")
   
+#' Final Thoughts:
+  #' The code is definitely efficient and streamlined overall with robust defence and fluid user experience, surpassing the expectations for this assignment.
+  #' Outstanding work, Taha!
