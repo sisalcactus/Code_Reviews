@@ -113,25 +113,25 @@ play_game()
 #' Peer Reviewer Shawn's Comments ####
 
 #' Required Functionality:
-  #' Dictionary is correctly prepared (in .txt file and 1 column).
+  #' Dictionary is correctly prepared (in .txt file and 1 column)
   #' Word list is read correctly
   #' Sampling occurs correctly
   #' Length of word is provided in the prompt
   #' Number of tries is given with clear instructions
   #' User input is correctly requested (great use of toupper() in line 58 so you didn't have to define a new variable) and the correct error message is printed for non-letter characters exceeding 1 character
-  #' Correct notification that user inputs are in the secret word with next letter requested properly
+  #' Correct notification that user inputs are or are not in the secret word with next letter requested properly where appropriate
   #' Next letters are correctly requested until the user runs out of all attempts
-  #' Game is over with all attempts used up with correct prompt shown and ended
+  #' Game is over with all attempts used up with correct prompt shown (e.g., secret word disclosed) and the game correctly ended
   #' No infinite loop appeared; great job
   #' Correct letters and wrong letters with remaining tries are prompted
 
 #' Bonus Functionality:
-  #' Characters are checked whether they are letters or not; elegant use of regex grepl() with the ^ and $ to ensure that the entire input (from start to end) is from A to Z and a to z; great work
+  #' Characters are checked whether they are letters or not; elegant use of regex grepl() with the ^ and $ to ensure that the entire input (from start to end) is either between A and Z or between a and z; great work
   #' Both upper and lower case letters allowed using grepl(); great job
   #' Clever use of toupper() to standardize inputs
   #' Visual clue of progress is given with each correct guess using the rep() function with "_"s and updates as the game progresses; this helps the user stay informed so great user experience
   #' Ingenious use of noquote() and rep() to set the blank tiles (visual clue of progress) with the appropriately placed code to update that clue in line 87
-  #' Excellent to offer the option to guess the full word and good application of toupper() to standardize the input
+  #' Excellent to offer the option to guess the full word (using a separate if block) and good application of toupper() to standardize the input
 
 #' Style and Organization:
   #' Very good use of functions and loop-related code (highlights being "next" and "break"), with definitions at the start of the code, to keep the main loop short and sweet
@@ -143,25 +143,29 @@ play_game()
   #' Detailed explanations throughout in your comments; fantastic attention to detail and focus on the purpose of the line of code at hand
 
 #' Recommendations:
-  #' Line 19: to set a vector of characters, could use unlist() rather than [[1]] if preferred
-  #' Line 34: to streamline the code, we could take out the creation and calling of the play_game() function; instead, we could just have, right after defining the visual_display() function, "wordlist <- readLines("Hangman_Words.txt")" and onward (basically keeping everything the same except taking out lines 34, 108, and 110 to keep your code concise)
-  #' Line 38: "prob = NULL" is not needed as that's in the default
+  #' Line 19: to set a vector of characters, could also use unlist() rather than including [[1]] if preferred
+  #' Line 34: to streamline the code, we could take out the creation and calling of the play_game() function; instead, we could just have, right after defining the visual_display() function, "wordlist <- readLines("Hangman_Words.txt")" and onward;
+    #' basically keeping everything the same except taking out lines 34, 108, and 110 to keep your code concise
+  #' Line 38: "prob = NULL" is not needed as that's in the default for sample()
   #' Line 44: could place this code in the visual_display() function for organization and replace single quote marks with double quote marks for consistency in style
-  #' Line 50: might be a good idea to tell the reader that even if they guess all letters correctly, they have to guess the full word to win the game (please see my comment regarding line 89)
-  #' Line 52: update prompt to: "The mystery word is", nchar(mystery_word), "letters long."
+  #' Line 50: might be a good idea to tell the player that even if they guess all letters correctly, they have to guess the full word to win the game (please see my comment regarding line 90)
+  #' Line 52: could update prompt to: print(paste("The mystery word is", nchar(mystery_word), "letters long.")) for concision
   #' Line 68: can replace "strsplit(mystery_word, "")[[1]]" with "mystery_word"
-  #' Line 75: might be a good idea to add a space before and after the minus sign for style
+  #' Lines 75 and 105: might be a good idea to add a space before and after the minus sign for style
   #' Line 79: can use "mistake == 5" instead since it can't get higher than 5 so the ">" will not be possible to reach (so "==" may be more applicable)
-  #' Line 87: could place this code into the "if (user_guess %in% strsplit(mystery_word, "")[[1]])" (line 68) for organization)
-  #' Line 89: I had guessed all letters of the word correctly (the visual clue of progress is filled) and was still prompted to enter the full word (I selected N for "Would you like to guess the mystery word? (Y/N)"); maybe we could add code to break the loop and say I won without needing to enter the full word
-  #' Line 90: the user is prompted to enter Y or N, and I was able to enter non-characters that prompted the message of "Enter guess"; maybe add another validity check here so the user is restricted to entering only Y or N (in line 93; maybe we could add another regex here)
+  #' Line 87: could place this code into in the if block starting with "if (user_guess %in% strsplit(mystery_word, "")[[1]])" (line 68) for organization since this is only relevant when the input is a correct letter)
+  #' Line 90: I had guessed all letters of the word correctly (the visual clue of progress is filled) and was still prompted to enter the full word (I then selected N for "Would you like to guess the mystery word? (Y/N)");
+    #' maybe we could add code to break the loop and say that the player won, without prompting them to enter the full word (could try: "if(mystery_word %in% guessed_letters || guess_the_word == mystery_word)" in line 98)
+  #' Line 90: the user is prompted to enter Y or N, and I was able to enter non-characters that prompted the message of "Enter guess"; maybe add another validity check here so the user is restricted to entering only Y or N;
+    #' maybe we could add another regex (another function similar to check_user_input()) in/around line 93
   #' Line 94: might be more intuitive to have "guessed_word" (noun) than "guess_the_word" (imperative)
   #' General:
-    #' for concision, can use paste() rather than paste0() (and remove the unnecessary spaces) for lines such as 52, 69, and 81
-    #' maybe add a line that prompts the user to play again whether they have won or lost: could do this outside the loop
-    #' maybe add a message that gives users on an ever-updating list of wrong letters they've guessed (could create a new vector to which newly made incorrect guesses are added, e.g. something like wrong_guesses <- c() as an initial condition and wrong_guesses <- c(wrong_guesses, guessed_letters) in an if block to update, and shown in a print message)
-    #' might be a good idea to notify the user their remaining tries even when they've inputted a correct letter (just another print() message but without 1 being added to "mistakes")
+    #' for concision, can use paste() rather than paste0() (and remove the unnecessary spaces) for lines such as 52, 69, and 73
+    #' maybe add a line that prompts the user to play again whether they have won or lost: could do this outside the loop and under the playgame() line (just adding "print("Play again.")")
+    #' maybe add a message that gives users an ever-updating list of wrong letters they've guessed (could create a new vector to which newly made incorrect guesses are added,
+      #' e.g. something like wrong_guesses <- c() as an initial condition and wrong_guesses <- c(wrong_guesses, guessed_letters) in an if block to update, then have that vector of wrong guesses shown in a print message)
+    #' might be a good idea to notify the user their remaining tries even when they've inputted a correct letter (just another print() message, this time without the number "1" being added to "mistakes")
   
 #' Final Thoughts:
-  #' The code is definitely efficient, readable, easy to follow, and streamlined with robust defence and fluid user experience, overall surpassing the expectations for this assignment.
+  #' The code is definitely efficient, readable, easy to follow, and streamlined with robust defense and fluid user experience, overall surpassing the expectations for this assignment.
   #' Outstanding work, Taha!
