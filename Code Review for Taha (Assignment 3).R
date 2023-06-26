@@ -118,7 +118,7 @@ play_game()
   #' Sampling occurs correctly
   #' Length of word is provided in the prompt
   #' Number of tries is given with clear instructions
-  #' User input is correctly requested (great use of toupper() in the line 58 so you didn't have to define a new variable) and the correct error message is printed for non-letter characters exceeding 1 character
+  #' User input is correctly requested (great use of toupper() in line 58 so you didn't have to define a new variable) and the correct error message is printed for non-letter characters exceeding 1 character
   #' Correct notification that user inputs are in the secret word with next letter requested properly
   #' Next letters are correctly requested until the user runs out of all attempts
   #' Game is over with all attempts used up with correct prompt shown and ended
@@ -126,12 +126,12 @@ play_game()
   #' Correct letters and wrong letters with remaining tries are prompted
 
 #' Bonus Functionality:
-  #' Characters are checked whether they are letters or not; elegant use of regex grepl() with the ^ and $; great work
+  #' Characters are checked whether they are letters or not; elegant use of regex grepl() with the ^ and $ to ensure that the entire input (from start to end) is from A to Z and a to z; great work
   #' Both upper and lower case letters allowed using grepl(); great job
-  #' Visual clue of progress is given with each correct guess using the rep() function with "_" and updates as the game progressed; this helps the user stay informed so great user experience
   #' Clever use of toupper() to standardize inputs
+  #' Visual clue of progress is given with each correct guess using the rep() function with "_"s and updates as the game progresses; this helps the user stay informed so great user experience
   #' Ingenious use of noquote() and rep() to set the blank tiles (visual clue of progress) with the appropriately placed code to update that clue in line 87
-  #' Excellent integration of using option to guess the full word and toupper() to standardize the input
+  #' Excellent to offer the option to guess the full word and good application of toupper() to standardize the input
 
 #' Style and Organization:
   #' Very good use of functions and loop-related code (highlights being "next" and "break"), with definitions at the start of the code, to keep the main loop short and sweet
