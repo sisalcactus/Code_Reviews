@@ -131,7 +131,7 @@ ggplot(log_dursec, aes(x = log.duration.seconds)) +
 
 #' Style and Organization:
   #' 
-  #' 
+  #'  
   #' 
   #' 
 
