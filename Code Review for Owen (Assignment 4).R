@@ -91,7 +91,7 @@ boxplot(filtered_dursec$`duration.seconds`, main = "Boxplot of Duration Seconds"
 log_dursec <- clean_ufo_data %>%
   mutate(log.duration.seconds = log(`duration.seconds` + 1)) # Adding a new column with log-transformed values to adjust for the skew
 #Creating two histograms to compare the difference in distribution
-library(ggplot2)
+library(ggplot2) 
 
 # Create a histogram of the log-transformed "duration.seconds" data
 
