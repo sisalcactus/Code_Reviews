@@ -1,5 +1,7 @@
 #A4
 #Author: Owen Treleaven
+#-------------------------------
+#Make sure the original is never changed!
 
 getwd()
 setwd("~/Google Drive/UoT - MBiotech/DHT_R_2023/Assignments/A4_MARTIANS")
@@ -90,7 +92,7 @@ boxplot(filtered_dursec$`duration.seconds`, main = "Boxplot of Duration Seconds"
 log_dursec <- clean_ufo_data %>%
   mutate(log.duration.seconds = log(`duration.seconds` + 1)) # Adding a new column with log-transformed values to adjust for the skew
 #Creating two histograms to compare the difference in distribution
-library(ggplot2) 
+library(ggplot2)
 
 # Create a histogram of the log-transformed "duration.seconds" data
 
@@ -105,27 +107,27 @@ ggplot(log_dursec, aes(x = log.duration.seconds)) +
 #' Peer Reviewer Shawn's Comments ####
 
 #' Required Functionality:
-  #' The dataset is correctly read into a data frame, with the headers correctly shown, the class confirmed, and no whitespace evident
-    #' Good use of class() to prove that the format is correct
-    #' Clever use of trimws with "both" specified; this checks for whitespace before and after the column names
-  #' Rows missing values for "Shape" are shown in a dataset; this meets the requirement of finding rows where said values are missing
-  #' "unknown" is correctly imputed into cells missing "shape" information; good use of replace() within mutate() 
-  #' Great conversion of datetime and date_posted using as.POSIXct() and as.Date(); the output appears correct
-  #' Clever use of str_detect(), which returns Boolean values, to identify hoaxes in the comments and populate the is_hoax column with "TRUE"s
-  #' At the same time, the is_hoax column actually also has to display the "FALSE"s (per the assignment requirements)
-  #' I don't seem to be getting the hoax_percentage_table intended: the hoax_percentage column shows "100"s
-  #' The report_delay column is correctly added with properly calculated differences (in days);
-    #' good use of difftime() with "days" specified and rounding to 2 decimal places 
-    #' also great use of mean() and arrange() to find the average of the data and organize it, respectively
-  #' 
+#' The dataset is correctly read into a data frame, with the headers correctly shown, the class confirmed, and no whitespace evident
+#' Good use of class() to prove that the format is correct
+#' Clever use of trimws with "both" specified; this checks for whitespace before and after the column names
+#' Rows missing values for "Shape" are shown in a dataset; this meets the requirement of finding rows where said values are missing
+#' "unknown" is correctly imputed into cells missing "shape" information; good use of replace() within mutate() 
+#' Great conversion of datetime and date_posted using as.POSIXct() and as.Date(); the output appears correct
+#' Clever use of str_detect(), which returns Boolean values, to identify hoaxes in the comments and populate the is_hoax column with "TRUE"s
+#' At the same time, the is_hoax column actually also has to display the "FALSE"s (per the assignment requirements)
+#' I don't seem to be getting the hoax_percentage_table intended: the hoax_percentage column shows "100"s
+#' The report_delay column is correctly added with properly calculated differences (in days);
+#' good use of difftime() with "days" specified and rounding to 2 decimal places 
+#' also great use of mean() and arrange() to find the average of the data and organize it, respectively
+#' 
 
 #' Bonus Functionality:
-  #' Superior use of extract functions to fill the "country" column, Owen; the process is logical and the comments help justify each related line of code
-  #' Very creative and thoughtful strategy of extracting based on the parentheses, placing the text (country name) within those into the "country" column, then removing the brackets
-  #' I see that most of the country names were correctly inserted into the "country" column, with some exceptions;
-    #' these include cases where there were multiple parenthesized texts or when the fetched text is not a country name but a series of random characters (e.g., 49.07xx&#176;n&#44 1.39xx&#176;e)
-    #' as a way to improve this, we could use regex to grab only letters, e.g. introducing [A-za-z])
-  #' Overall, you did a great job, Owen! This is no small challenge and the code you have is a terrific achievement
+#' Superior use of extract functions to fill the "country" column, Owen; the process is logical and the comments help justify each related line of code
+#' Very creative and thoughtful strategy of extracting based on the parentheses, placing the text (country name) within those into the "country" column, then removing the brackets
+#' I see that most of the country names were correctly inserted into the "country" column, with some exceptions;
+#' these include cases where there were multiple parenthesized texts or when the fetched text is not a country name but a series of random characters (e.g., 49.07xx&#176;n&#44 1.39xx&#176;e)
+#' as a way to improve this, we could use regex to grab only letters, e.g. introducing [A-za-z])
+#' Overall, you did a great job, Owen! This is no small challenge and the code you have is a terrific achievement
 
 #' Style and Organization:
 #' 
@@ -134,15 +136,15 @@ ggplot(log_dursec, aes(x = log.duration.seconds)) +
 #' 
 
 #' Recommendations:
-  #' Line 8: code can be shortened as some specifications are the default ("header = TRUE") so can be taken out;
-  #' as an alternative, you could have used read.csv() for concision (no need to specify the "sep" part)
-  #' Line 10: to simplify the code, we could avoid creating a copy (new variable) of "og_ufo_data" and instead use "og_ufo_data" for the entirety of the code
-  #' Line 11: maybe add a justification for this line of code; the "print()" part may not be needed as without it, we still see the desired head rows
-  #' Lines 27 and 30: we don't have to define a new variable to visualize results; just having the code you want visualized will do (e.g., just having "colnames(ufo_data)" in one line will yield the output in Console, and that would suffice and prevent crowding the "Environment")
-  #' Line 33: to numerically show the rows where "Shape" values are missing, we could use: which(clean_ufo_data$shape == "")
-  #' General:
-    #' To streamline and shorten the code, we could add more pipes in the first few sections of your code
-    #' Some comments can be shorter or taken out (e.g., lines 36 and 37 are duplicates)
+#' Line 8: code can be shortened as some specifications are the default ("header = TRUE") so can be taken out;
+#' as an alternative, you could have used read.csv() for concision (no need to specify the "sep" part)
+#' Line 10: to simplify the code, we could avoid creating a copy (new variable) of "og_ufo_data" and instead use "og_ufo_data" for the entirety of the code
+#' Line 11: maybe add a justification for this line of code; the "print()" part may not be needed as without it, we still see the desired head rows
+#' Lines 27 and 30: we don't have to define a new variable to visualize results; just having the code you want visualized will do (e.g., just having "colnames(ufo_data)" in one line will yield the output in Console, and that would suffice and prevent crowding the "Environment")
+#' Line 33: to numerically show the rows where "Shape" values are missing, we could use: which(clean_ufo_data$shape == "")
+#' General:
+#' To streamline and shorten the code, we could add more pipes in the first few sections of your code
+#' Some comments can be shorter or taken out (e.g., lines 36 and 37 are duplicates)
 
 #' Final Thoughts:
 #'  
