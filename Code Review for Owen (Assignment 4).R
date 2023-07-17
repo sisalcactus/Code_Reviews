@@ -1,7 +1,6 @@
 #A4
 #Author: Owen Treleaven
-#-------------------------------
-#Make sure the original is never changed!
+
 getwd()
 setwd("~/Google Drive/UoT - MBiotech/DHT_R_2023/Assignments/A4_MARTIANS")
 library(tidyverse)
