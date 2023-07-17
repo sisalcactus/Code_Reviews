@@ -147,7 +147,5 @@ ggplot(log_dursec, aes(x = log.duration.seconds)) +
     #' Some comments can be shorter or taken out (e.g., lines 36 and 37 are duplicates)
 
 #' Final Thoughts:
-  #'  
-  #' 
-#' 
-#' 
+  #' Overall, the code is detailed and the coding generally yielded the intended results, with some areas for review such as the hoax percentages
+  #' Very good work, Owen!
