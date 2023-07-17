@@ -146,7 +146,7 @@ ggplot(log_dursec, aes(x = log.duration.seconds)) +
     #' Some comments can be shorter or taken out (e.g., lines 36 and 37 are duplicates)
 
 #' Final Thoughts:
-#' 
+#'  
 #' 
 #' 
 #' 
