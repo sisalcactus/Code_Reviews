@@ -128,6 +128,32 @@ ggplot(log_dursec, aes(x = log.duration.seconds)) +
 #' these include cases where there were multiple parenthesized texts or when the fetched text is not a country name but a series of random characters (e.g., 49.07xx&#176;n&#44 1.39xx&#176;e)
 #' as a way to improve this, we could use regex to grab only letters, e.g. introducing [A-za-z])
 #' Overall, you did a great job, Owen! This is no small challenge and the code you have is a terrific achievement
+<<<<<<< HEAD
+=======
+
+#' Style and Organization:
+#' 
+#' 
+#' 
+#' 
+
+#' Recommendations:
+#' Line 8: code can be shortened as some specifications are the default ("header = TRUE") so can be taken out;
+#' as an alternative, you could have used read.csv() for concision (no need to specify the "sep" part)
+#' Line 10: to simplify the code, we could avoid creating a copy (new variable) of "og_ufo_data" and instead use "og_ufo_data" for the entirety of the code
+#' Line 11: maybe add a justification for this line of code; the "print()" part may not be needed as without it, we still see the desired head rows
+#' Lines 27 and 30: we don't have to define a new variable to visualize results; just having the code you want visualized will do (e.g., just having "colnames(ufo_data)" in one line will yield the output in Console, and that would suffice and prevent crowding the "Environment")
+#' Line 33: to numerically show the rows where "Shape" values are missing, we could use: which(clean_ufo_data$shape == "")
+#' General:
+#' To streamline and shorten the code, we could add more pipes in the first few sections of your code
+#' Some comments can be shorter or taken out (e.g., lines 36 and 37 are duplicates)
+
+#' Final Thoughts:
+#'  
+#' 
+#' 
+#' 
+>>>>>>> c7e29a737d2facf55f0a78e91388b9e202283f61
 
 #' Style and Organization:
 #' 
