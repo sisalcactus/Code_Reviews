@@ -117,16 +117,20 @@ ggplot(log_dursec, aes(x = log.duration.seconds)) +
   #' At the same time, the is_hoax column actually also has to display the "FALSE"s (per the assignment requirements)
   #' I don't seem to be getting the hoax_percentage_table intended: the hoax_percentage column shows "100"s
   #' The report_delay column is correctly added with properly calculated differences (in days);
-  #' good use of difftime() with "days" specified and rounding to 2 decimal places 
-  #' also great use of mean() and arrange() to find the average of the data and organize it, respectively
-  #' 
+    #' good use of difftime() with "days" specified and rounding to 2 decimal places 
+  #' Good report_delay table display
+    #' Great use of mean() and arrange() to find the average of the data and organize it, respectively
+  #' Really good use of the comparison operator to filter out (remove) the rows where sightings were posted before they were sighted
+  #' Good analysis of duration.seconds column using descriptive statistics and plotting, very good use of the boxplot to visualize outliers and data distribution
+  #' For the histogram, good use of log scaling; this allows the entire data to be shown
+  #' Very good use of ggplot with well selected colour and axis titles
 
 #' Bonus Functionality:
   #' Superior use of extract functions to fill the "country" column, Owen; the process is logical and the comments help justify each related line of code
   #' Very creative and thoughtful strategy of extracting based on the parentheses, placing the text (country name) within those into the "country" column, then removing the brackets
   #' I see that most of the country names were correctly inserted into the "country" column, with some exceptions;
-  #' these include cases where there were multiple parenthesized texts or when the fetched text is not a country name but a series of random characters (e.g., 49.07xx&#176;n&#44 1.39xx&#176;e)
-  #' as a way to improve this, we could use regex to grab only letters, e.g. introducing [A-za-z])
+    #' these include cases where there were multiple parenthesized texts or when the fetched text is not a country name but a series of random characters (e.g., 49.07xx&#176;n&#44 1.39xx&#176;e)
+    #' as a way to improve this, we could use regex to grab only letters, e.g. introducing [A-za-z])
   #' Overall, you did a great job, Owen! This is no small challenge and the code you have is a terrific achievement
 
 #' Style and Organization:
@@ -142,6 +146,7 @@ ggplot(log_dursec, aes(x = log.duration.seconds)) +
   #' Line 11: maybe add a justification for this line of code; the "print()" part may not be needed as without it, we still see the desired head rows
   #' Lines 27 and 30: we don't have to define a new variable to visualize results; just having the code you want visualized will do (e.g., just having "colnames(ufo_data)" in one line will yield the output in Console, and that would suffice and prevent crowding the "Environment")
   #' Line 33: to numerically show the rows where "Shape" values are missing, we could use: which(clean_ufo_data$shape == "")
+  #' Line 87: did you mean "&" instead of ","?
   #' General:
     #' To streamline and shorten the code, we could add more pipes in the first few sections of your code
     #' Some comments can be shorter or taken out (e.g., lines 36 and 37 are duplicates)
