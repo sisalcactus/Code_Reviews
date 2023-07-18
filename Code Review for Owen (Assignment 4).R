@@ -2,7 +2,6 @@
 #Author: Owen Treleaven
 #-------------------------------
 #Make sure the original is never changed!
-
 getwd()
 setwd("~/Google Drive/UoT - MBiotech/DHT_R_2023/Assignments/A4_MARTIANS")
 library(tidyverse)
@@ -109,7 +108,6 @@ ggplot(log_dursec, aes(x = log.duration.seconds)) +
 #' Required Functionality:
   #' The dataset is correctly read into a data frame, with the headers correctly shown, the class confirmed, and no whitespace evident
   #' Good use of class() to prove that the format is correct
-  #' Clever use of trimws with "both" specified; this checks for whitespace before and after the column names
   #' Rows missing values for "Shape" are shown in a dataset; this meets the requirement of finding rows where said values are missing
   #' "unknown" is correctly imputed into cells missing "shape" information; good use of replace() within mutate() 
   #' Great conversion of datetime and date_posted using as.POSIXct() and as.Date(); the output appears correct
@@ -133,24 +131,42 @@ ggplot(log_dursec, aes(x = log.duration.seconds)) +
     #' as a way to improve this, we could use regex to grab only letters, e.g. introducing [A-za-z])
   #' Overall, you did a great job, Owen! This is no small challenge and the code you have is a terrific achievement
 
-#' Style and Organization:
-  #' 
-  #'  
-  #' 
-  #' 
+#' Style and Organization Observations and Recommendations:
+  #' Overall clear explanatory comments and good use of pipes to streamline the code
+  #' Clear lines of code are evident with excellent formatting of code in the ggplot especially
+  #' Good use of ifelse() statements to update columns
+  #' It might be helpful to add section headings (using "# HEADING ####" to help with scannability and organization)
+  #' Pipes may be used some more as a step for refinement
+  #' Many new variables were assigned when they don't seem to be needed (e.g., clean_col_names); maybe can remove
+  #' Can consider adding indents and spaces between comments and code for readability
+  #' Some variable names can be shortened (date_updated_ufo can be ufo_new_date or ufo_fixed_date) for concision
 
-#' Recommendations:
-  #' Line 8: code can be shortened as some specifications are the default ("header = TRUE") so can be taken out;
-  #' as an alternative, you could have used read.csv() for concision (no need to specify the "sep" part)
+#' Code-specific Recommendations:
+  #' Line 8: code can be shortened to remove default specification ("header = TRUE") so can be taken out;
+    #' as an alternative, you could have used read.csv() for concision (no need to specify the "sep" part)
   #' Line 10: to simplify the code, we could avoid creating a copy (new variable) of "og_ufo_data" and instead use "og_ufo_data" for the entirety of the code
-  #' Line 11: maybe add a justification for this line of code; the "print()" part may not be needed as without it, we still see the desired head rows
+  #' Line 11: maybe add a justification for this line of code; the "print()" part may not be needed as without it, we still see the desired head rows in the console window
   #' Lines 27 and 30: we don't have to define a new variable to visualize results; just having the code you want visualized will do (e.g., just having "colnames(ufo_data)" in one line will yield the output in Console, and that would suffice and prevent crowding the "Environment")
+  #' Line 29: for trimws(), "both" does not need to be specified as it is the default (checks for whitespace before and after the column names)
   #' Line 33: to numerically show the rows where "Shape" values are missing, we could use: which(clean_ufo_data$shape == "")
-  #' Line 87: did you mean "&" instead of ","?
+  #' Line 34: to impute "unknown", could use "mutate(shape = case_when(shape == "" ~ "unknown", .default = shape))" for brevity (dplyr pkg)
+  #' Line 38: could use "case_when" (dplyr pkg) as alternative
+  #' Line 40: I believe we can take out the "."
+  #' Line 53: for datetime, we can remove the time portion (irrelevant, confirmed with instructor) and rename it date_observed using rename(); this prevents the decimal places in downstream report_delay calculation
+  #' Line 58: we actually do not need to filter as the assignment only asks for the is_hoax to be created (meaning mutate() to create a column will do)
+  #' Line 59: it seems that we did not define "FALSE" here; to do that, we can code: mutate(is_hoax = case_when(grepl("hoax", tolower(comments)) & grepl("fake", tolower(comments)) ~ TRUE, .default = FALSE)) (dplyr pkg)
+    #' at the same time, there is a row that says "This is not a hoax" and the code you intended removes that; I would recommend keeping it using: !grepl("This is not a hoax")
+  #' Line 64: the hoax percentage table did not seem to work for me: I think this is because for we are only seeing the rows that have TRUE (we did not seem to define FALSE), meaning we cannot find the proportions (the mean() does not seem to register)
+    #' to address this, we could use sum() to count the number of "TRUE"s and another sum() to count the total number of all rows in the column (TRUE and FALSE), then make the division
+  #' Line 86: did you mean "&" instead of ","?
+  #' Line 92: I am not very sure what the intent of "+ 1" is; maybe clarify in the comment for future?
+  #' Line 101: maybe we could adjust the y axis limit so there is a value above the peak of the plot;
+    #' another way to achieve the same goal would be to use hist(), but I like the ggplot for its functionalities
   #' General:
-    #' To streamline and shorten the code, we could add more pipes in the first few sections of your code
+    #' To streamline and shorten the code, we could add more pipes (and reduce the number of new variable definitions) in the first few sections of your code
     #' Some comments can be shorter or taken out (e.g., lines 36 and 37 are duplicates)
+    #' To view/visualize outputs, can use "View(X table)" rather than "X table"; this automatically opens the table of interest in another tab in the workspace
 
 #' Final Thoughts:
-  #' Overall, the code is detailed and the coding generally yielded the intended results, with some areas for review such as the hoax percentages
+  #' Overall, the code is detailed and the coding generally yielded the intended results, with some areas for review such as the hoax column and percentages
   #' Very good work, Owen!
