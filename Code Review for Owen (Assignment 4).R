@@ -158,6 +158,7 @@ ggplot(log_dursec, aes(x = log.duration.seconds)) +
     #' at the same time, there is a row that says "This is not a hoax" and the code you intended removes that; I would recommend keeping it using: !grepl("This is not a hoax")
   #' Line 64: the hoax percentage table did not seem to work for me: I think this is because for we are only seeing the rows that have TRUE (we did not seem to define FALSE), meaning we cannot find the proportions (the mean() does not seem to register)
     #' to address this, we could use sum() to count the number of "TRUE"s and another sum() to count the total number of all rows in the column with TRUE (by country), then make the division
+    #' also, I don't think we need the na.rm expression is the whole column should be populated
   #' Line 86: did you mean "&" instead of ","?
   #' Line 92: I am not very sure what the intent of "+ 1" is; maybe clarify in the comment for future?
   #' Line 101: maybe we could adjust the y axis limit so there is a value above the peak of the plot;
