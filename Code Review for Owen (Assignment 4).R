@@ -111,16 +111,16 @@ ggplot(log_dursec, aes(x = log.duration.seconds)) +
   #' Rows missing values for "Shape" are shown in a dataset; this meets the requirement of finding rows where said values are missing
   #' "unknown" is correctly imputed into cells missing "shape" information; good use of replace() within mutate() 
   #' Great conversion of datetime and date_posted using as.POSIXct() and as.Date(); the output appears correct
-  #' Clever use of str_detect(), which returns Boolean values, to identify hoaxes in the comments and populate the is_hoax column with "TRUE"s
+  #' Clever use of str_detect(), which returns Boolean values, in approach to identify possible hoaxes in the comments and populate the is_hoax column with "TRUE"s
   #' At the same time, the is_hoax column actually also has to display the "FALSE"s (per the assignment requirements)
   #' I don't seem to be getting the hoax_percentage_table intended: the hoax_percentage column shows "100"s
   #' The report_delay column is correctly added with properly calculated differences (in days);
     #' good use of difftime() with "days" specified and rounding to 2 decimal places 
-  #' Good report_delay table display
+  #' Good average_report_delay table display
     #' Great use of mean() and arrange() to find the average of the data and organize it, respectively
   #' Really good use of the comparison operator to filter out (remove) the rows where sightings were posted before they were sighted
   #' Good analysis of duration.seconds column using descriptive statistics and plotting, very good use of the boxplot to visualize outliers and data distribution
-  #' For the histogram, good use of log scaling; this allows the entire data to be shown
+  #' For the histogram, good use of log scaling; this allows the entire data to be shown and good explanation of what the issue was and how you fixed it
   #' Very good use of ggplot with well selected colour and axis titles
 
 #' Bonus Functionality:
@@ -133,6 +133,7 @@ ggplot(log_dursec, aes(x = log.duration.seconds)) +
 
 #' Style and Organization Observations and Recommendations:
   #' Overall clear explanatory comments and good use of pipes to streamline the code
+  #' The code is structured in line with the order of tasks in the assignment instructions list; this is helpful for checking the code and following the workflow
   #' Clear lines of code are evident with excellent formatting of code in the ggplot especially
   #' Good use of ifelse() statements to update columns
   #' It might be helpful to add section headings (using "# HEADING ####" to help with scannability and organization)
@@ -153,21 +154,23 @@ ggplot(log_dursec, aes(x = log.duration.seconds)) +
   #' Line 38: could use "case_when" (dplyr pkg) as alternative
   #' Line 40: I believe we can take out the "."
   #' Line 53: for datetime, we can remove the time portion (irrelevant, confirmed with instructor) and rename it date_observed using rename(); this prevents the decimal places in downstream report_delay calculation
+  #' Line 57: it might be nice to remove some other rows using grepl("false information", tolower(comments)) | grepl("false alarm", tolower(comments)
+    #' This is because these represent comments that said "Sorry for the false information..." and "Sorry - false alarm; the bright orange light I saw was just a flare.", meaning both are definitely hoaxes
   #' Line 58: I think we actually do not need to filter as the assignment only asks for the is_hoax to be created (meaning mutate() to create a column will do)
   #' Line 59: it seems that we did not define "FALSE" here; to do that, we can code: mutate(is_hoax = case_when(grepl("hoax", tolower(comments)) & grepl("fake", tolower(comments)) ~ TRUE, .default = FALSE)) (dplyr pkg)
     #' at the same time, there is a row that says "This is not a hoax" and the code you intended removes that; I would recommend keeping it using: !grepl("This is not a hoax")
-  #' Line 64: the hoax percentage table did not seem to work for me: I think this is because for we are only seeing the rows that have TRUE (we did not seem to define FALSE), meaning we cannot find the proportions (the mean() does not seem to register)
-    #' to address this, we could use sum() to count the number of "TRUE"s and another sum() to count the total number of all rows in the column with TRUE (by country), then make the division
+  #' Line 64: the hoax percentage table did not seem to work for me: I think this is because for we are only seeing the rows that have TRUE (we did not seem to define FALSE), meaning we cannot find the proportions (the mean() does not seem to generate the intended output)
+    #' to address this, we could use sum() to count the total number of "TRUE"s and another sum() to count the number of all rows in the column with TRUE (by country), then make the division
     #' also, I don't think we need the na.rm expression is the whole column should be populated
-  #' Line 86: did you mean "&" instead of ","?
+  #' Line 86: did you mean "&" instead of ","? Also, it might be helpful to check for missing values by using sum() where you check for empty strings ("") and (is.na()) in separate lines to show this even more clearly; the same can be done for is.numeric()
   #' Line 92: I am not very sure what the intent of "+ 1" is; maybe clarify in the comment for future?
   #' Line 101: maybe we could adjust the y axis limit so there is a value above the peak of the plot;
     #' another way to achieve the same goal would be to use hist(), but I like the ggplot for its functionalities
   #' General:
     #' To streamline and shorten the code, we could add more pipes (and reduce the number of new variable definitions) in the first few sections of your code
     #' Some comments can be shorter or taken out (e.g., lines 36 and 37 are duplicates)
-    #' To view/visualize outputs, can use "View(X table)" rather than "X table"; this automatically opens the table of interest in another tab in the workspace
+    #' To view/visualize outputs, can use "View(X)" rather than "X"; this automatically opens the object of interest in another tab in the workspace
 
 #' Final Thoughts:
-  #' Overall, the code is detailed and the coding generally yielded the intended results, with some areas for review such as the hoax column and percentages
+  #' Overall, the code is detailed and the coding generally yielded the intended results and functional, with some areas for review such as the hoax column and percentages
   #' Very good work, Owen!
